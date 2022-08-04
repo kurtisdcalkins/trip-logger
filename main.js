@@ -66,6 +66,7 @@ function addTripToList(form) {
     
         // Clones the form to be added to the trips list section. The original form is thus preserved.
         const clone = form.cloneNode(true);
+        clone.setAttribute('id', 'trip');
         tripDiv.appendChild(clone);
         allTripsDiv.insertBefore(tripDiv, allTripsDiv.children[0]);
     
@@ -81,8 +82,15 @@ function addTripToList(form) {
         dayTripInput.style.display = 'none';
         document.getElementById('trip-selector').style.display = 'none';
         document.getElementById('trip-input').style.display = 'none';
+        clone.querySelector('#description-submit').style.display = 'none';
+        
+        // // Make the trips list items editable with a double-click
+        // const tripsList = document.getElementById('.all-trips-div').document.getElementsByTagName('input');
+        
+        // tripsList.forEach(createEventListener);
     });
 }
+
 
 // Call addTripToList function on each form
 addTripToList(dayForm);
@@ -91,8 +99,9 @@ addTripToList(multiDayForm);
 
 // Function to give an HTML element an attribute of 'readonly' and 'disabled' so the text gets locked
 function changeToReadonly(item) {
-    item.setAttribute('readonly', 'readonly');
-    item.setAttribute('disabled', 'disabled');
+    createEventListener(item);
+    item.setAttribute('readonly', true);
+    // item.setAttribute('disabled', 'disabled');
 }
 
 
@@ -100,6 +109,27 @@ function changeToReadonly(item) {
 function lockDescriptionItem(arr) {
     arr.forEach(changeToReadonly);
 }
+
+
+
+
+
+// ************ Add event listeners to trips list items in order to edit
+function createEventListener(item) {
+    item.addEventListener('dblclick', (e) => {
+
+        // item.removeAttribute('disabled');
+        item.removeAttribute('readonly');
+    });
+    item.addEventListener('keyup', event => {
+        if (event.code === 'Enter') {
+            event.preventDefault();
+            item.setAttribute('readonly', true);
+        }
+    })
+
+}
+
 
 
 
