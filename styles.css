@@ -1,0 +1,213 @@
+html {
+    font-size: 16px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: darkgray;
+    box-sizing: border-box;
+}
+
+input:disabled, textarea:disabled {
+    color: inherit;
+}
+
+
+/*------- Header ---------*/
+header {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    background-color: hsl(195, 53%, 59%);
+    align-items: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+
+/* ---- Main ---- */
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+section {
+    border: 1px solid;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+/* ---Add a new Trip section --- */
+#add-button {
+    border-radius: 22px;
+    padding: .75rem;
+    font-size: 2rem;
+}
+
+
+/* --- Trip Type Section --- */
+#trip-selector {
+    display: none;
+    flex-direction: column;
+}
+
+
+/* ---Format for Input Section and Trips List Section--- */
+.each-trip {
+    border: 1px solid;
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- Trip Input Section --- */
+#trip-input {
+    display: none;
+}
+
+#day-trip-input {
+    display: none;
+}
+
+#multi-trip-input {
+    display: none;
+}
+
+/* ---- Trips List Section */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+input:read-only {
+    border: none;
+    background-color: inherit;
+}
+
+
+
+
+
+
+
+.title:read-only {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.map-details {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: .75rem;
+    align-items: center;
+    background-color: hsl(0, 0%, 46%);
+}
+
+img {
+    height: 150px;
+    max-width: 150px;
+    padding-right: 2rem;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* padding-right: 2rem; */
+}
+
+.detail label {
+    font-weight: bold;
+}
+
+.detail input {
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+
+.trip-log {
+    display: flex;
+    flex-direction: column;
+}
+
+.trip-log label {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#paragraph {
+    margin-top: .75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.paragraph {
+    margin-top: 1rem;
+}
+
+
+.paragraph:read-only {
+    background-color: inherit;
+    border: none;
+    height: fit-content;
+}
+
+
+#description-submit:disabled {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
