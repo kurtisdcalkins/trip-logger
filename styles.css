@@ -4,6 +4,7 @@ html {
     width: 100%;
     background-color: darkgray;
     box-sizing: border-box;
+    font-family: -apple-system,sans-serif;
 }
 
 input:disabled, textarea:disabled {
@@ -14,7 +15,7 @@ input:disabled, textarea:disabled {
 /*------- Header ---------*/
 header {
     display: flex;
-    padding: 2rem;
+    padding: 1rem 15rem;
     justify-content: space-between;
     background-color: hsl(195, 53%, 59%);
     align-items: center;
@@ -23,27 +24,18 @@ header {
 header h1 {
     font-size: 3rem;
     color: white;
+    text-shadow: 2px 2px 2px black;
 }
+
 
 
 /* ---- Main ---- */
 main {
     width: 80%;
     margin: 0 auto;
+    margin-top: 1rem;
 }
 
-
-section {
-    border: 1px solid;
-    margin-bottom: 1rem;
-    padding: 1rem;
-}
-/* ---Add a new Trip section --- */
-#add-button {
-    border-radius: 22px;
-    padding: .75rem;
-    font-size: 2rem;
-}
 
 
 /* --- Trip Type Section --- */
@@ -52,12 +44,73 @@ section {
     flex-direction: column;
 }
 
+.day-selector {
+    padding: .5rem;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    box-shadow: -1rem 1rem 1rem black;
+}
+
+#question {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: .75rem;
+}
+
+input:checked {
+    height: 15px;
+    width: 15px;
+}
+
+input:checked + label {
+    font-size: 1.25rem;
+    color: bisque;
+}
+
+section:focus {
+    border: 1px solid;
+}
+
+
 
 /* ---Format for Input Section and Trips List Section--- */
+#sub-trip-form {
+    display: none;
+}
+
 .each-trip {
-    border: 1px solid;
+    /* border: 1px solid; */
     margin-bottom: 1rem;
     padding: .5rem;
+}
+
+#trip-input .single-trip {
+    background-color: cornflowerblue;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: -6px 6px 10px rgb(49, 42, 42);
+}
+
+#trip-input .single-trip:hover {
+    transform: none;
+}
+
+.single-trip {
+    background-color: cornflowerblue;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: -6px 6px 10px rgb(49, 42, 42);
+}
+
+.single-trip:hover {
+    box-shadow: -6px 6px 10px rgb(49, 42, 42);
+    transform: scale(1.01);
+}
+
+.single-trip:hover > .title {
+    color: blue;
 }
 
 .title {
@@ -66,10 +119,26 @@ section {
 }
 
 
+input, textarea {
+    background-color: hsl(219, 79%, 46%);
+    border-radius: .5em;
+    box-shadow: 0px 0px 8px inset;    
+    margin: .2rem;
+    padding: .3rem;
+}
 
+input::placeholder, textarea::placeholder {
+    color: hsl(0, 0%, 70%);
+}
 
+input:focus::placeholder, textarea:focus::placeholder {
+    color: transparent;
+}
 
-
+input:focus, textarea:focus {
+    background-color: hsl(325, 79%, 56%);
+    box-shadow: 0px 0px 20px inset; 
+}
 
 
 
@@ -87,29 +156,49 @@ section {
     display: none;
 }
 
-/* ---- Trips List Section */
-h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
 
-
+/* --- Each trip as readonly --- */
 input:read-only {
     border: none;
     background-color: inherit;
+    box-shadow: none;
+    font-size: 1rem;
+    color: darkblue;
 }
-
-
-
-
-
 
 
 .title:read-only {
     font-size: 1.5rem;
     /* margin-bottom: 1rem; */
     text-decoration: underline;
+    box-shadow: none;
+    color: hsl(0, 0%, 0%);
+    font-family: -apple-system,sans-serif;
 }
+
+.description:read-only {
+    /* color: hsl(0, 0%, 10%); */
+    background-color: inherit;
+    border: none;
+    height: fit-content;
+    box-shadow: none;
+    font-size: 1rem;
+    color: darkblue;
+    padding: 0 2rem;
+}
+
+
+/* ---- Trips List Section */
+#trip-list {
+    margin-top: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
 
 h3 {
     font-size: 1.5rem;
@@ -121,7 +210,8 @@ h3 {
     flex-direction: row;
     margin-bottom: .75rem;
     align-items: center;
-    background-color: hsl(0, 0%, 46%);
+    /* background-color: hsl(0, 0%, 46%); */
+    padding: 1rem;
 }
 
 img {
@@ -131,52 +221,203 @@ img {
 }
 
 .details  {
-    display: flex;
+    display: inline-grid;
     /* justify-content: space-between; */
-    width: 100%;
-    /* padding-right: 2rem; */
+    max-width: 500px;
+    /* padding-right: 1rem; */
 }
 
-.detail label {
-    font-weight: bold;
-}
-
-.detail input {
-    margin-top: .5rem;
-    padding: .5rem;
-}
-
-
-.trip-log {
+.detail-div {
     display: flex;
     flex-direction: column;
 }
 
-.trip-log label {
+.detail-div label {
     font-weight: bold;
-    text-decoration: underline;
 }
 
-#paragraph {
-    margin-top: .75rem;
+
+#paragraph-div {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }
 
-.paragraph {
+.paragraph label {
+    font-weight: bold;
+}
+
+.description {
+    margin: 1rem 0;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+}
+
+.trip-div > * {
+    border: 1px solid;
+    background-color: hsl(195, 53%, 59%);
+}
+
+
+.single-trip > #single-trip-form {
+    display: none;
     margin-top: 1rem;
 }
 
+.sub {
+    box-shadow: none;
+    margin: 1rem ;
+    background-color: hsl(195, 53%, 69%);
+}
 
-.paragraph:read-only {
-    background-color: inherit;
-    border: none;
-    height: fit-content;
+.sub:hover {
+    box-shadow: 0px 0px 10px inset;
+    transform: none;
+}
+
+.date input:read-only, .date {
+    color: hsl(0, 0%, 10%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
-#description-submit:disabled {
-    display: none;
+#start-date {
+    text-align: right;
+    padding-right: 0;
+}
+
+#end-date {
+    text-align: right;
+}
+
+
+.rating input {
+    text-align: right;
+    font-size: 1rem;
+    color: darkblue;
+    font-weight: bold;
+}
+
+
+/* --- Buttons --- */
+#add-button {
+    appearance: none;
+    background-color: #FFFFFF;
+    border-radius: 40em;
+    border-style: none;
+    box-shadow: #ADCFFF 0 -12px 6px inset;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -.24px;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.3rem;
+    quotes: auto;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#add-button:hover {
+    background-color: hsl(43, 100%, 58%);
+    box-shadow: #FF6314 0 -6px 8px inset;
+    transform: scale(1.125);
+}
+
+#add-button:active {
+    transform: scale(1.025);
+}
+  
+
+#description-submit {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, hsl(193, 100%, 48%) 0, hsl(233, 100%, 56%) 100%);
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 3rem;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 2rem;
+}
+
+#description-submit:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+#description-submit:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+
+#add-subtrip-button {
+    appearance: none;
+    background-color: #FFFFFF;
+    border-radius: 40em;
+    border-style: none;
+    box-shadow: #ADCFFF 0 -12px 6px inset;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -.24px;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.3rem;
+    quotes: auto;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#add-subtrip-button:hover {
+    background-color: #FFC229;
+    box-shadow: #FF6314 0 -6px 8px inset;
+    transform: scale(1.125);
+}
+
+#add-subtrip-button:active {
+    transform: scale(1.025);
 }
 
 
@@ -185,23 +426,12 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (min-width: 768px) {
+  #add-button {
+    font-size: 1.5rem;
+    padding: .75rem 2rem;
+  }
+}
 
 
 

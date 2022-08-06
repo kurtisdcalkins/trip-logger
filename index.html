@@ -15,18 +15,16 @@
     </head>
     <body>
         <header>
+            <button id="add-button">+ Add a new Trip</button>
             <h1>Off-road Trip Logger</h1>
-            <p>Filter</p>
-            <p>Search</p>
+            <!-- <p>Filter</p>
+            <p>Search</p> -->
         </header>
         <main>
-            <section class="add">
-                <button id="add-button">+ Add a new Trip</button>
-            </section>
             <section class="section" id="trip-selector">
                 <div class="day-selector">
                     <!-- <form action="submit"> -->
-                    <p for="trip-type">Was this a day trip or was it a multi-day trip?</p>
+                    <p id="question">Was this a day trip or was it a multi-day trip?</p>
                     <input type="radio" name="trip-type" value="Day Trip" id='day-trip-radio'>
                     <label for="day-trip">Day Trip</label>
                     <input type="radio" name="trip-type" value="Multi-Day Trip" id='multi-day-trip-radio'>
@@ -37,74 +35,63 @@
             <section class="section" id="trip-input">
                 <div class="each-trip" id="day-trip-input">
                     <div class="single-trip" id="single-trip-form">
-                        <form action="" id="day-trip-form">
-                            <input type="text" class="title" id="day-title-form" placeholder="Title" required>
+                        <form class="trip-form" id="day-trip-form">
+                            <input type="text" class="title" id="day-title-form" placeholder="Enter Title" required>
+                            <div class="date">
+                                <input type="date" class="single-date" id="date-form" placeholder="Enter Date of trip">
+                            </div>
                             <div class="map-details" id="map-details">
-                                <img src="./Images/Screenshot_of_map.png" alt="map">
+                                <img id="image" />
                                 <div class="details">
-                                    <div  class="detail">
-                                        <label for="date-detail">Date:</label>
-                                        <input class="detail" id="date-details" type="text" placeholder="date" required>
-                                    </div>
 
-                                    <div class="detail">
+                                    <div class="detail-div">
                                         <label for="trail-detail">Trail(s):</label>
-                                        <input class="detail" id="trail-details" type="text" placeholder="trails">
+                                        <input class="detail" id="day-trail-form" type="text" placeholder="Enter trail(s)">
                                     </div>
             
-                                    <div class="detail">
+                                    <div class="detail-div">
                                         <label for="group-detail">Group:</label>
-                                        <input class="detail" id="day-group-details" type="text" placeholder="Drive: Vehicle">
+                                        <input class="detail" id="day-group-form" type="text" placeholder="E.g. Driver: Vehicle" size="100">
                                     </div>
 
-                                    <div class="detail">
+                                    <div class="detail-div">
                                         <label for="difficulty-detail">Difficulty</label>
-                                        <input class="detail" id="difficulty-details" type="text" name="" id="" placeholder="rating out of 10">
+                                        <input class="detail" id="day-difficulty-form" type="text" placeholder="Enter rating out of 10">
                                     </div>
             
-                                    <div class="detail">
+                                    <div class="detail-div">
                                         <label for="fun-rating-detail">Fun Rating</label>
-                                        <input class="detail" id="fun-rating-details" type="text" name="" id="" placeholder="fun rating out of 10">
+                                        <input class="detail" id="day-fun-rating-form" type="text" placeholder="Enter fun rating out of 10">
                                     </div>
             
                                 </div>
                             </div>
-                            <div id="paragraph">
+                            <div class="paragraph" id="paragraph-div">
                                 <label for="trip-detail">Description:</label>
-                                <textarea class="paragraph" name="" id="day-trip-paragraph" cols="30" rows="10"></textarea>
+                                <textarea class="description" name="" id="day-description-form" cols="30" rows="10" placeholder="Enter a description of the trip"></textarea>
                                 <button id="description-submit" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="each-trip" id="multi-trip-input">
-                    <div id="single-trip">
-                        <form action="" id="multi-trip-form">
-                            <input type="text" class="title" id="multi-title-form" placeholder="Title" required>
-                            <div class="map-details" id="map-details">
-                                <img src="./Images/Screenshot_of_map.png" alt="map">
-                                <div class="details">
-                                    
-                                    <div class="detail">
-                                        <label for="start-date-detail">Start Date:</label>
-                                        <input class="detail" id="start-date-details" type="text" placeholder="Start date" required>
-                                    </div>
-
-                                    <div class="detail">
-                                        <label for="end-date-detail">End Date:</label>
-                                        <input class="detail" id="end-date-details" type="text" placeholder="End date" required>
-                                    </div>
-
-                                    <div class="detail">
-                                        <label for="group-detail">Group:</label>
-                                        <input class="detail" id="multi-group-details" type="text" placeholder="Drive: Vehicle">
-                                    </div>
-
-                                </div>
+                    <div class="single-trip" id="single-trip-form">
+                        <form class="trip-form" id="multi-trip-form">
+                            <input type="text" class="title" id="multi-title-form" placeholder="Enter Title" required>
+                            <div class="date">
+                                <input type="date" class="date-range" id="start-date-form" placeholder="Enter Start Date">
+                                <p>through</p>
+                                <input type="date" class="date-range" id="end-date-form" placeholder="Enter End Date">
                             </div>
-                            <div id="paragraph">
+            
+                            <div class="detail-div">
+                                <label for="group-detail">Group:</label>
+                                <input class="detail" id="multi-group-form" type="text" placeholder="E.g. Driver: Vehicle" size="100">
+                            </div>
+            
+                            <div class="paragraph" id="paragraph-div">
                                 <label for="trip-detail">Description:</label>
-                                <textarea class="paragraph" name="" id="multi-trip-paragraph" cols="30" rows="10"></textarea>
+                                <textarea class="description" name="" id="multi-description-form" cols="30" rows="10" placeholder="Enter a description of the trip"></textarea>
                                 <button id="description-submit" type="submit">Submit</button>
                             </div>
                         </form>
@@ -113,7 +100,7 @@
             </section>
             <section class="section" id="trip-list">
                 <h2>Trips:</h2>
-                    <div class="all-trips-div">
+                    <div class="all-trips-div" id="all-trips-div"> 
                     </div>
             </section>
         </main>
