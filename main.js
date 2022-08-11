@@ -250,6 +250,8 @@ function formEvent(form) {
                 subForm.style.display = 'none';
             });
         }
+        // Persist the app state to the browser's local storage
+        localStorage.setItem('allTripsRef', JSON.stringify(allTrips));
     })
 }
 
@@ -528,7 +530,85 @@ function setSubInnerHtml(lastTrip) {
 
 
 
+// ###### Section to persist data to local storage
 
+function renderFromAllTrips(tripsList) {
+    tripsList.forEach((trip) => {
+        const parentDiv = document.getElementById('all-trips-div');
+        if (trip.tripType === 'day') {
+            let html = setDayInnerHtml(trip);
+            let eachTripList = createTripDiv(html);
+            let textInputsList = createInputsList(eachTripList);
+            for (let each in textInputsList) {
+                removeReadonly(textInputsList[each], allTrips);
+            }
+            appendNewDiv(eachTripList, parentDiv);
+        } else {
+            let html = setMultiInnerHtml(trip);
+            let parentId = trip.id;
+            const subTripsList = trip.subTrips;
+            let eachTripList = createTripDiv(html);
+            let textInputsList = createInputsList(eachTripList);
+            for (let each in textInputsList) {
+                removeReadonly(textInputsList[each], allTrips);
+            }
+            appendNewDiv(eachTripList, parentDiv);
+            subTripsList.forEach((subTrip) => {
+                const subForm = document.querySelector('#sub-trip-form');
+                const subButton = document.getElementById('add-subtrip-button');
+
+                const parentSubForm = subForm.parentElement;
+                // Adds event listener to the 'Add a sub-trip' button to show the the subform
+                subButton.addEventListener('click', event => {
+                    parentSubForm.style.display = 'inherit';
+                    subForm.style.display = 'inline';
+                });
+                // Adds event listener to the subform 'submit' button and reproduces the rest of the submission steps for the other forms above
+                subForm.addEventListener('submit', event => {
+                    event.preventDefault();
+                    parentSubForm.style.display = 'none';
+
+                    // Sub trip form variables
+                    const titleSubForm = document.querySelector('#sub-title-form');
+                    const dateSubForm = document.querySelector('#sub-date-form');
+                    const trailSubForm = document.querySelector('#sub-trail-form');
+                    const groupSubForm = document.querySelector('#sub-group-form');
+                    const difficultySubForm = document.querySelector('#sub-difficulty-form');
+                    const funRatingSubForm = document.querySelector('#sub-fun-rating-form');
+                    const paragraphSubForm = document.querySelector('#sub-description-form');
+                    
+                    // Sets the correct innerHTML
+                    const subHtml = setSubInnerHtml(subTrip);
+                    // Finds the correct multi-trip to use as the parent of the sub trip
+                    const subParentDiv = document.getElementById(`${parentId}`);
+                    // Creates a new div with the sub-trip inner HTML
+                    let subTripDiv = createTripDiv(subHtml);
+                    // Create a list of all the inputs
+                    let subTextInputsList = createInputsList(subTripDiv);
+                    // Adds event listeners to each input to alllow editing
+                    for (let each in subTextInputsList) {
+                        removeReadonly(subTextInputsList[each], subTripsList)
+                    };
+                    // Appends the created div to the parent multi-day trip div
+                    subParentDiv.appendChild(subTripDiv);
+                    // Resets and hides the form for later use
+                    subForm.reset();
+                    subForm.style.display = 'none';
+                }); 
+            })
+        }
+    })
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (ref) {
+        allTrips = JSON.parse(ref);
+        renderFromAllTrips(allTrips);
+    }
+})
 
 
 
