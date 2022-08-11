@@ -30,6 +30,15 @@ header h1 {
 
 
 /* ---- Main ---- */
+.back-img {
+    background-image: url("./Images/IMG_8013.JPG");
+    background-size: cover;
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    background-attachment: fixed;
+}
+
 main {
     width: 80%;
     margin: 0 auto;
@@ -46,7 +55,8 @@ main {
 
 .day-selector {
     padding: .5rem;
-    background-color: cornflowerblue;
+    background-color: hsl(219, 79%, 66%, .4);
+
     border-radius: 20px;
     box-shadow: -1rem 1rem 1rem black;
 }
@@ -85,11 +95,11 @@ section:focus {
 }
 
 #trip-input .single-trip {
-    background-color: cornflowerblue;
+    background-color: hsl(219, 79%, 66%, .5);
     padding: 1rem;
     border-radius: 20px;
     margin-bottom: 1rem;
-    box-shadow: -6px 6px 10px rgb(49, 42, 42);
+    /* box-shadow: -6px 6px 10px rgb(49, 42, 42); */
 }
 
 #trip-input .single-trip:hover {
@@ -97,16 +107,17 @@ section:focus {
 }
 
 .single-trip {
-    background-color: cornflowerblue;
+    background-color: hsl(219, 79%, 66%, .4);
     padding: 1rem;
     border-radius: 20px;
     margin-bottom: 1rem;
-    box-shadow: -6px 6px 10px rgb(49, 42, 42);
+    transition: 0.6s;
+    /* box-shadow: -6px 6px 10px rgb(49, 42, 42); */
 }
 
 .single-trip:hover {
-    box-shadow: -6px 6px 10px rgb(49, 42, 42);
-    transform: scale(1.01);
+    /* box-shadow: -6px 6px 10px rgb(49, 42, 42); */
+    transform: scale(1.05);
 }
 
 .single-trip:hover > .title {
@@ -258,7 +269,8 @@ img {
 
 .trip-div > * {
     border: 1px solid;
-    background-color: hsl(195, 53%, 59%);
+    background-color: hsl(195, 53%, 59%, 0.5);
+    transition: 0.6s;
 }
 
 
@@ -270,7 +282,7 @@ img {
 .sub {
     box-shadow: none;
     margin: 1rem ;
-    background-color: hsl(195, 53%, 69%);
+    background-color: hsl(195, 53%, 69%, 0.5);
 }
 
 .sub:hover {
